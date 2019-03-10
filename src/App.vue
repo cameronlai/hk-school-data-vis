@@ -52,7 +52,7 @@ export default {
       messages: ["hello", "vue", "js"],
 
       selected_school_type: "Kindergartens",
-      school_type: ["Aided Primary Schools", "Kindergartens", "Direct Subsidy Scheme Primary Schools"],
+      school_type: ["Aided Primary Schools", "Kindergartens", "Direct Subsidy Scheme Primary Schools", "Aided Special Schools"],
 
       school_table_headers: [
         { text: 'School Name', value: 'D' },
