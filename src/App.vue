@@ -1,28 +1,90 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <v-app id="inspire">
+    <v-container fluid>
+      <v-layout wrap>
+        <v-flex xs12>
+          <v-combobox
+            v-model="selected_school_type"
+            :items="school_type"
+            v-on:change="changeSchoolType"
+            label="Select the type of school"
+          ></v-combobox>
+        </v-flex>
+        <v-flex xs12>
+          <v-data-table :headers="school_table_headers" :items="filtered_school_data" class="elevation-1">
+            <template v-slot:items="schools">
+              <td>{{ schools.item.D }}</td>
+              <td>{{ schools.item.B }}</td>              
+            </template>
+          </v-data-table>
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </v-app>
+
+  <!-- <div id="app">
+    <h1>Hong Kong School Information Visualization</h1>
+
+
+    <button v-on:click="loadMore">Load More</button>
+    <ul>
+      <li v-for="msg in messages">{{ msg }}</li>
+    </ul>
+    <ul>
+      <li v-for="item in info">{{ item.B }}</li>
+    </ul>
+    <TodoList />
+    <Map />
+  </div>-->
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import axios from "axios";
+import Map from "./components/Map.vue";
+import TodoList from "./components/TodoList.vue";
 
 export default {
-  name: "app",
+  el: "#app",
+  data() {
+    return {
+      school_data: [],
+      filtered_school_data: [],
+      messages: ["hello", "vue", "js"],
+
+      selected_school_type: "Kindergartens",
+      school_type: ["Aided Primary Schools", "Kindergartens"],
+
+      school_table_headers: [
+        { text: 'School Name', value: 'D' },
+        { text: 'School Type', value: 'B' },
+      ],
+    };
+  },
+  mounted() {
+    axios.get("/data3.json").then(response => {
+      this.school_data = response.data;
+      this.changeCriteria();
+    });    
+  },
+  methods: {
+    loadMore: function() {
+      console.log("hello " + event.messages);
+    },
+    changeCriteria: function() {
+      console.log(this.selected_school_type)
+      this.filtered_school_data = this.school_data.filter(school => school.B == this.selected_school_type);
+      console.log(this.filtered_school_data);
+    },
+    changeSchoolType: function(selectedObj) {
+      console.log("here");
+      console.log(this.selected_school_type);
+      console.log(selectedObj);      
+      this.changeCriteria();
+    },
+  },
   components: {
-    HelloWorld
+    TodoList,
+    Map
   }
 };
 </script>
-
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
