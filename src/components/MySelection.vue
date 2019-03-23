@@ -5,6 +5,8 @@
         :items="prop_selection.items"
         :label="prop_selection.label"
         v-on:change="$emit('change-selection')"
+        clearable
+        clear-icon="clear"
       >     
       </v-combobox>
     </v-flex>
@@ -13,13 +15,9 @@
 <script>
 export default {
   name: "MySelection",
-  components: {
-  },
   props: ['prop_selection'],
   data() {
-    return {
-      //selected_item: "Kindergartens",
-      //selected_items: ["Aided Primary Schools", "Kindergartens", "Direct Subsidy Scheme Primary Schools", "Aided Special Schools"]
+    return {            
     };
   }
 };
