@@ -22,7 +22,6 @@ export default {
   },
   methods: {
     onChange: function() {
-      console.log("here");
       this.$emit("change-selection");
     }
   }

@@ -125,7 +125,6 @@ export default {
       this.school_table_data = this.school_data.filter(this.filterFunc);
       this.updateSelectionItems();
     }
-
   },
   components: {
     TodoList,
