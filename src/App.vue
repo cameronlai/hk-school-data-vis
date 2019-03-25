@@ -44,8 +44,8 @@ export default {
         ["E", "Q", "S", "U", "W", "Y", "AG"]
         ],
       school_selection_columns: [
-        ["P", "R", ],//"T", "V", "X", "AF"],
-        ["Q", "S", ]//"U", "W", "Y", "AG"],
+        ["P", "R", "T", "V", "X", "AF"],
+        ["Q", "S", "U", "W", "Y", "AG"],
       ],      
       school_selection_data: [],
       // Table data
@@ -54,8 +54,8 @@ export default {
     };
   },
   mounted() {
-    axios.get("/data3.json").then(response => {
-      //axios.get("/real_data.json").then(response => {
+    //axios.get("/data3.json").then(response => {
+      axios.get("/real_data.json").then(response => {
       this.school_header = response.data.shift();
       this.school_data = response.data;
 
@@ -109,13 +109,10 @@ export default {
       for (var i = 0; i < this.school_selection_columns[this.lang_index].length; i++) {
         var col_name = this.school_selection_columns[this.lang_index][i];
         var selected_item = this.school_selection_data[i].item;
-        console.log("---")
-        console.log(selected_item);
-        console.log(item[col_name]);
-        if (selected_item == undefined || selected_item == null) {
+        if (selected_item == undefined) {
           continue;
         }
-        if (item[col_name] == undefined || item[col_name] != selected_item) {
+        if (item[col_name] != selected_item) {
           return false;
         }
       }
