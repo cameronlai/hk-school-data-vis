@@ -1,10 +1,10 @@
 <template>
-    <v-flex xs12>
+    <v-flex xs2>
       <v-combobox
         v-model="prop_selection.item"
-        :items="prop_selection.items"
-        :label="prop_selection.label"
-        v-on:change="$emit('change-selection')"
+        v-bind:items="prop_selection.items"
+        v-bind:label="prop_selection.label"
+        v-on:change="onChange"
         clearable
         clear-icon="clear"
       >     
@@ -17,8 +17,14 @@ export default {
   name: "MySelection",
   props: ['prop_selection'],
   data() {
-    return {            
+    return {
     };
+  },
+  methods: {
+    onChange: function() {
+      console.log("here");
+      this.$emit("change-selection");
+    }
   }
 };
 </script>
