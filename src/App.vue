@@ -2,6 +2,7 @@
   <v-app id="inspire">
     <v-container fluid>
       <v-layout row wrap>
+        HK School Data
         <v-toolbar color="cyan" dark>
           <v-toolbar-side-icon></v-toolbar-side-icon>
           <v-toolbar-title>Hong Kong School Finder</v-toolbar-title>
@@ -28,7 +29,6 @@ import axios from "axios";
 import MyMap from "./components/MyMap.vue";
 import MySelection from "./components/MySelection.vue";
 import MyTable from "./components/MyTable.vue";
-import TodoList from "./components/TodoList.vue";
 
 export default {
   el: "#app",
@@ -54,8 +54,8 @@ export default {
     };
   },
   mounted() {
-    //axios.get("/data3.json").then(response => {
-      axios.get("/real_data.json").then(response => {
+    axios.get("./data3.json").then(response => {
+      //axios.get("/real_data.json").then(response => {
       this.school_header = response.data.shift();
       this.school_data = response.data;
 
@@ -124,7 +124,6 @@ export default {
     }
   },
   components: {
-    TodoList,
     MyMap,
     MySelection,
     MyTable
