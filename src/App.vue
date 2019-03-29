@@ -2,7 +2,7 @@
   <v-app id="inspire">
     <v-container fluid>
       <v-layout row wrap>
-        HK School Data
+        HK School Data with Map
         <v-toolbar color="cyan" dark>
           <v-toolbar-side-icon></v-toolbar-side-icon>
           <v-toolbar-title>Hong Kong School Finder</v-toolbar-title>
