@@ -1,5 +1,7 @@
 # hk-school-data-vis
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/66eaa768-33de-4772-8e9e-0a7706051311/deploy-status)](https://app.netlify.com/sites/xenodochial-engelbart-647c5e/deploys)
+
 ## Project setup
 ```
 npm install
